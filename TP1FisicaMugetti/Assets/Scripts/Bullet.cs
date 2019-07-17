@@ -23,6 +23,7 @@ public class Bullet : MonoBehaviour
         initialPosition = Vector3.zero;
         initialSpeeds = Vector2.zero;
         MugettiPhysics.StateGravity(gravity);
+        GetComponent<Collider>().OnColEnter.AddListener(Deactivate);
     }
 
 
@@ -32,14 +33,7 @@ public class Bullet : MonoBehaviour
         {
             if (transform.position.y <= 0)
             {
-                initialtime = 0;
-                trailCounter = 0;
-                initialPosition = Vector3.one * 600;
-                transform.position = initialPosition;
-                initialSpeeds = Vector2.zero;
-                active = false;
-                DeactivateTrail();
-                gameObject.SetActive(false);
+                Deactivate();
                 return;
             }
             MugettiPhysics.MVec2 initPos;
@@ -57,12 +51,14 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    public void Launch(float initAngleZ, float initSpeed)
+    public void Launch(float initAngleZ, float initSpeed, bool towardsX)
     {
         initialPosition = LaunchPoint.position;
-        //initAngleZ -= 90;
+        transform.position = initialPosition;
         initAngleZ *= Mathf.Deg2Rad;
-        initialSpeeds = new Vector2(initSpeed * Mathf.Cos(initAngleZ), initSpeed * Mathf.Sin(initAngleZ));
+        int modifier = 1;
+        if(!towardsX){ modifier = -1;}
+        initialSpeeds = new Vector2(initSpeed * Mathf.Cos(initAngleZ) * modifier, initSpeed * Mathf.Sin(initAngleZ));
         active = true;
         initialtime = Time.time;
         gameObject.SetActive(true);
@@ -95,7 +91,19 @@ public class Bullet : MonoBehaviour
 
         }
     }
-
+    private void Deactivate(){
+        if (active){
+            initialtime = 0;
+            trailCounter = 0;
+            initialPosition = Vector3.one * 600;
+            transform.position = initialPosition;
+            initialSpeeds = Vector2.zero;
+            active = false;
+            DeactivateTrail();
+            FindObjectOfType<GameManager>().EndTurn();
+            gameObject.SetActive(false);
+        }
+    }
 }
 
 

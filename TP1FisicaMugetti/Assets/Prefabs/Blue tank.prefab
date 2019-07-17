@@ -171,6 +171,7 @@ GameObject:
   - component: {fileID: 2440094520927470056}
   - component: {fileID: 1134046229}
   - component: {fileID: 1134046230}
+  - component: {fileID: 104481360716714720}
   m_Layer: 0
   m_Name: Blue tank
   m_TagString: Untagged
@@ -268,8 +269,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Canon: {fileID: 2440094520039005553}
-  Bullet: {fileID: 0}
-  isRight: 0
+  Bullet: {fileID: 4571341232806910615}
+  minRot: 0
+  maxRot: 180
+  rotSpd: 15
+  chargeSpd: 5
+  isLeft: 1
+--- !u!114 &104481360716714720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2440094520927470057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a541f38718caa3741ad00d501186a44e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Layer: 1
+  BoxOrCircle: 1
+  HeightorRadius: 29
+  Width: 48
+  OnColEnter:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &3256800240963767741
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,6 +307,7 @@ GameObject:
   - component: {fileID: 3288263454266562021}
   - component: {fileID: 3543515286709525340}
   - component: {fileID: 4571341232806910615}
+  - component: {fileID: 689481034083884080}
   m_Layer: 0
   m_Name: Blue Shot
   m_TagString: Untagged
@@ -297,7 +324,7 @@ Transform:
   m_GameObject: {fileID: 3256800240963767741}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.206, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 2440094520927470063}
   m_RootOrder: 2
@@ -365,7 +392,29 @@ MonoBehaviour:
   gravity: 9.8
   trailPrefab: {fileID: 5429365241246652214, guid: f376cbe6f1dcb824a82c5d5a438e8866,
     type: 3}
-  trailTiming: 0.5
+  trailTiming: 0.25
+  LaunchPoint: {fileID: 2175451949487668392}
+--- !u!114 &689481034083884080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3256800240963767741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a541f38718caa3741ad00d501186a44e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Layer: 1
+  BoxOrCircle: 0
+  HeightorRadius: 1
+  Width: 1
+  OnColEnter:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &4609708269869295947
 GameObject:
   m_ObjectHideFlags: 0

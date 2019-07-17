@@ -31,7 +31,7 @@
             return FinalPos;
         }
 
-        public static MVec2 TiroOblicuo(float initialTime, float currentTime, MVec2 initialPosition, MVec2 Speeds)
+        public static MVec2 TiroOblicuo(float initialTime, float currentTime, MVec2 initialPosition, MVec2 Speeds, bool towardsX)
         {
             MVec2 FinalPos;
             float TimeDifference = currentTime - initialTime;
