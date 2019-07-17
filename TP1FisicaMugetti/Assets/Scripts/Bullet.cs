@@ -54,17 +54,17 @@ public class Bullet : MonoBehaviour
             newPosition.y = newPos.Y;
             transform.position = newPosition;
             Trail(newPosition);
-            Debug.Log(newPos.X + " " + newPos.Y);
         }
     }
 
     public void Launch(float initAngleZ, float initSpeed)
     {
         initialPosition = LaunchPoint.position;
+        //initAngleZ -= 90;
+        initAngleZ *= Mathf.Deg2Rad;
         initialSpeeds = new Vector2(initSpeed * Mathf.Cos(initAngleZ), initSpeed * Mathf.Sin(initAngleZ));
         active = true;
         initialtime = Time.time;
-        Debug.Log(initialSpeeds);
         gameObject.SetActive(true);
     }
 
